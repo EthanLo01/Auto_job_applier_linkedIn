@@ -18,6 +18,7 @@ import os
 import csv
 import re
 import pyautogui
+import time
 
 from random import choice, shuffle, randint
 from datetime import datetime
@@ -73,7 +74,7 @@ skip_count = 0
 dailyEasyApplyLimitReached = False
 
 re_experience = re.compile(r'[(]?\s*(\d+)\s*[)]?\s*[-to]*\s*\d*[+]*\s*year[s]?', re.IGNORECASE)
-
+ai_provider = "openai" '"openai"'
 desired_salary_lakhs = str(round(desired_salary / 100000, 2))
 desired_salary_monthly = str(round(desired_salary/12, 2))
 desired_salary = str(desired_salary)
@@ -115,6 +116,8 @@ def login_LN() -> None:
     * If failed, tries to login using saved LinkedIn profile button if available
     * If both failed, asks user to login manually
     '''
+
+    time.sleep(60)
     # Find the username and password fields and fill them with user credentials
     driver.get("https://www.linkedin.com/login")
     try:
